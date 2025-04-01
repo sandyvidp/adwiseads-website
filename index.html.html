@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdwiseAds - Google Ads Growth Experts</title>
+    <style>
+        :root {
+            --primary: #1a56db;
+            --primary-dark: #1e429f;
+            --primary-light: #3f83f8;
+            --secondary: #f0f4ff;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --gray-light: #f3f4f6;
+            --gray: #e5e7eb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .button.secondary {
+            background-color: var(--white);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .button.secondary:hover {
+            background-color: var(--secondary);
+        }
+        
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--text);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            padding: 10rem 0 6rem;
+            background-color: var(--secondary);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+        
+        .hero-text {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-image {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 40rem;
+        }
+        
+        .shape {
+            position: absolute;
+            z-index: 1;
+            opacity: 0.6;
+        }
+        
+        .shape-1 {
+            top: 10%;
+            left: 10%;
+            width: 200px;
+            height: 200px;
+            border-radius: 43% 57% 70% 30% / 30% 31% 69% 70%;
+            background-color: rgba(63, 131, 248, 0.1);
+            animation: morph 15s linear infinite alternate;
+        }
+        
+        .shape-2 {
+            bottom: 10%;
+            right: 10%;
+            width: 300px;
+            height: 300px;
+            border-radius: 24% 76% 35% 65% / 27% 40% 60% 73%;
+            background-color: rgba(63, 131, 248, 0.1);
+            animation: morph 18s linear infinite alternate;
+        }
+        
+        @keyframes morph {
+            0% {
+                border-radius: 40% 60% 60% 40% / 40% 60% 40% 60%;
+            }
+            100% {
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            }
+        }
+        
+        .services {
+            padding: 6rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .service-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .testimonials {
+            padding: 6rem 0;
+            background-color: var(--secondary);
+        }
+        
+        .testimonials-slider {
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-slide {
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .testimonial-slide.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .cta {
+            padding: 6rem 0;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .contact {
+            padding: 6rem 0;
+            background-color: var(--secondary);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .contact-form {
+            background-color: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(63, 131, 248, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        footer {
+            background-color: var(--text);
+            color: var(--white);
+            padding: 3rem 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-brand p {
+            margin-top: 1rem;
+            color: var(--gray);
+        }
+        
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .hero {
+                padding: 8rem 0 4rem;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .shape-1, .shape-2 {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        
+        /* Animation triggers */
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transition: all 0.6s ease-in-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+        }
+        
+        .active.fade-bottom {
+            animation: fade-bottom 0.6s ease-in-out both;
+        }
+        
+        .active.fade-left {
+            animation: fade-left 0.6s ease-in-out both;
+        }
+        
+        .active.fade-right {
+            animation: fade-right 0.6s ease-in-out both;
+        }
+        
+        @keyframes fade-bottom {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fade-left {
+            0% {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fade-right {
+            0% {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Adwise<span>Ads</span></a>
+                <div class="nav-links">
+                    <a href="#services">Services</a>
+                    <a href="#work">Our Work</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text reveal fade-left">
+                    <h1>Google Ads Growth Experts</h1>
+                    <p>We help SMBs & e-commerce businesses scale their Google Ads with profitable customer acquisition and growth results, driving exceptional ROI.</p>
+                    <a href="#contact" class="button">Schedule a Free Strategy Call</a>
+                </div>
+                <div class="hero-image reveal fade-right">
+                    <img src="/api/placeholder/400/320" alt="Google Ads Growth">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal fade-bottom">
+                <h2>What We Do</h2>
+                <p>We specialize in creating winning Google Ads campaigns that deliver measurable results</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal fade-bottom">
+                    <div class="service-icon">📊</div>
+                    <h3>Google Ads Audit</h3>
+                    <p>We'll review your current Google Ads performance and identify key opportunities for improvement and optimization.</p>
+                </div>
+                <div class="service-card reveal fade-bottom">
+                    <div class="service-icon">🚀</div>
+                    <h3>Campaign Management</h3>
+                    <p>Full-service management of your Google Ads campaigns with strategic planning, implementation, and optimization.</p>
+                </div>
+                <div class="service-card reveal fade-bottom">
+                    <div class="service-icon">📈</div>
+                    <h3>Performance Optimization</h3>
+                    <p>Continuous improvement of your campaigns to maximize ROI, reduce CPA, and scale your business profitably.</p>
+                </div>
+                <div class="service-card reveal fade-bottom">
+                    <div class="service-icon">🎯</div>
+                    <h3>Conversion Tracking</h3>
+                    <p>Proper setup and monitoring of conversion tracking to ensure accurate measurement of your campaign results.</p>
+                </div>
+                <div class="service-card reveal fade-bottom">
+                    <div class="service-icon">📱</div>
+                    <h3>Landing Page Optimization</h3>
+                    <p>Recommendations and insights to improve your landing pages for higher conversion rates and better user experience.</p>
+                </div>
+                <div class="service-card reveal fade-bottom">
+                    <div class="service-icon">📝</div>
+                    <h3>Performance Reporting</h3>
+                    <p>Clear, transparent reporting on your campaign performance with actionable insights and recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content reveal fade-bottom">
+                <h2>Ready to Take Your Google Ads to the Next Level?</h2>
+                <p>We've helped businesses across various industries grow their revenue and customer base through strategic Google Ads campaigns.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="button">Get a Free Audit</a>
+                    <a href="#testimonials" class="button secondary">See Our Results</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal fade-bottom">
+                <h2>What Our Clients Say</h2>
+                <p>Don't just take our word for it - here's what our clients have to say about our Google Ads management</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-slide reveal fade-bottom">
+                    <p class="testimonial-text">"Working with AdwiseAds has been transformative for our business. They increased our conversion rate by 147% while reducing our cost per acquisition by 31%. Their strategic approach and attention to detail is unmatched."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/50/50" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Johnson</h4>
+                            <p>CEO, TechSolutions Inc.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide reveal fade-bottom">
+                    <p class="testimonial-text">"The team at AdwiseAds helped us scale our e-commerce store from $10K to $45K in monthly revenue in just 4 months. Their knowledge of Google Ads is exceptional, and they're always quick to respond and implement new strategies."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/50/50" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Williams</h4>
+                            <p>Founder, StyleShop</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header reveal fade-bottom">
+                <h2>Get in Touch</h2>
+                <p>Ready to grow your business with Google Ads? Contact us today for a free strategy call</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal fade-left">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>(555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>hello@adwiseads.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>123 Digital Marketing St.<br>San Francisco, CA 94105</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form reveal fade-right">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website URL</label>
+                            <input type="url" id="website" class="form-control" placeholder="Enter your website URL">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">How can we help?</label>
+                            <textarea id="message" class="form-control" placeholder="Tell us about your business and goals"></textarea>
+                        </div>
+                        <button type="submit" class="button">Schedule Strategy Call</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">Adwise<span>Ads</span></div>
+                    <p>Google Ads experts helping businesses scale profitably with data-driven strategies and proven results.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">FB</a>
+                        <a href="#" class="social-link">TW</a>
+                        <a href="#" class="social-link">IG</a>
+                        <a href="#" class="social-link">LI</a>
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav">
+                    <h3 class="footer-heading">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Google Ads Management</a></li>
+                        <li><a href="#">PPC Audits</a></li>
+                        <li><a href="#">Conversion Optimization</a></li>
+                        <li><a href="#">Landing Page Design</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 AdwiseAds. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal animations when scrolling
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        
+        window.addEventListener("scroll", reveal);
+        reveal(); // To check the initial state
+
+        // Service cards animation with delay
+        const cards = document.querySelectorAll('.service-card');
+        const testimonials = document.querySelectorAll('.testimonial-slide');
+        
+        function animateWithDelay() {
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animated');
+                }, 100 * index);
+            });
+            
+            testimonials.forEach((testimonial, index) => {
+                setTimeout(() => {
+                    testimonial.classList.add('animated');
+                }, 100 * index);
+            });
+        }
+        
+        window.addEventListener('load', animateWithDelay);
+    </script>
+</body>
+</html>
